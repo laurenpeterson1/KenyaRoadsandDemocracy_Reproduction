@@ -1,0 +1,47 @@
+Notes on the reproduction attempt
+"C:\Users\laurenpeterson\Documents/GitHub/KenyaRoadsandDemocracy_Reproduction/ICPSR_Reproduction/AER_2013_1031_replication/main-tables-figures
+
+
+\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\ICPSR_Reproduction\AER_2013_1031_replication\main-
+> tables-figures\data-preparation-main-tables-figures\observations.dta
+
+
+robustness improvements:
+- controls.dta file was not very reliable  (very sensitive and will not open always)
+- they clear the data every time they are manipulating a different data set (this is why the pop1962_share was not found in part on dependent variable being paved roads) have to restate calculation for the pop share again
+- for the do file for tables —> when reproduced it does not run a clear table it runs large tables for each column within the table itself
+
+
+
+
+data sources for table 1 and 2
+  - oberservations.xls
+  - road_development_expenditure.xls
+  - kenya_roads (merge with road_development_expenditure)
+  - ethnic_shares.xls
+  - kenya_roads (merge with ethnic_shares)
+-
+
+
+
+
+table 2
+- paved_road_construction.xls
+- kenya_roads_exp (saves as controls.dta)
+- counterfactual_reallocation_pav_pop.xls
+- kenya_roads_pav
+    - merge with counterfactual_reallocation_pav_pop_raw
+    - becomes counterfactual_pop
+-counterfacutal_reallocation_pav_dist.xls
+  - becomes counterfactual_pav_dist_raw
+-kenya_roads_pav
+  - merge with counterfactual_pav_dist_raw
+  - becomes counterfactual_distance
+-counterfacutal_reallocation_pav_mp.xls
+  - becomes counterfactual_pav_mp_raw
+- kenya_roads_pav
+  - merge counterfactual_pav_mp_raw
+  - becomes counterfactual_pop_distance
+- use paved_road_construction
+  - merge controls.dta
+  - save as kenya_roads_pav (after a lot of editing)

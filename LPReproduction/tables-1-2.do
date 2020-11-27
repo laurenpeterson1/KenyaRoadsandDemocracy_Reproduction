@@ -1,5 +1,5 @@
 * Define the location of the main folder on your computer *
-global mypath "\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\ICPSR_Reproduction\AER_2013_1031_replication\main-tables-figures"
+global mypath "\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\LPReproduction"
 
 * In the "data-preparation-main-tables-figures" folder, we have used the dofile "data-preperation-main-tables-figures.do" to create the three data sets we use to run the main regressions for Kenya *
 * - One data set (kenya_roads_exp) with road development expenditure as the dependent variable

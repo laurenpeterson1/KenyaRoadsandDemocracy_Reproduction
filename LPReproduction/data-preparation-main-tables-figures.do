@@ -474,7 +474,7 @@ label var change_paved_exp_pop_6402 "Paved road construction (pop.counterfactual
 label var change_paved_exp_dist_6402 "Paved road construction (dist.counterfactual)[d,t]"
 label var change_paved_exp_mp_6402 "Paved road construction (pop.dist.counterfactual)[d,t]"
 
-save "$mypath\kenya_roads_exp", replace
+save "\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\LPReproduction\kenya_roads_exp", replace
 * creates "kenya_roads_exp", the data set with road development expenditure as the dependent variable
 * the data set is saved in the main folder
 
@@ -496,7 +496,7 @@ sort distname_1979
 keep province distname_1979 distnum pop1962 pop1962_share area area_share urbrate1962 earnings wage_employment value_cashcrops dist2nairobi border MomKam *share62
 bysort distname: keep if _n == 1
 sort distname
-save "\\Client\H$\Downloads\112942-V1 (1)\AER_2013_1031_replication\main-tables-figures\data-preparation-main-tables-figures\controls.dta", replace
+save "$mypath\controls.dta", replace
 
 * counterfactual for paved road construction, based on population
 
@@ -615,12 +615,15 @@ bysort year: egen change_paved_country = sum(change_paved)
 label var change_paved_country "Paved road construction for the country as whole in year t"
 gen chpaved_share = change_paved / change_paved_country*100
 label var chpaved_share "Share of paved road construction [d,t]"
-gen pop1962_share = pop1962/pop1962_country*100
+bysort year: egen pop1962_country = sum(pop1962)
 gen change_paved_share = chpaved_share / pop1962_share
 label var change_paved_share "Share of paved road construction [d,t] / Population share [d,1962]"
 
 * other dependent variable: Share of paved road construction [d,t] / Area share [d]
 
+bysort year: egen area_country = sum(area)
+label var area_country "Area in sq.km. of the country"
+gen area_share = area/area_country*100
 gen change_paved_share2 = chpaved_share / area_share
 label var change_paved_share2 "Share of paved road construction [d,t] / Area share [d]"
 
@@ -632,6 +635,8 @@ label var multiparty "Democracy [t]"
 
 * Coethnic district dummy [d,t]
 
+gen kikuyu = (kikuyu_share62 >= 0.5)
+label var kikuyu "Kikuyu district dummy [d,1962]"
 gen president = 0
 replace president = 1 if kikuyu_share62 >= 0.5 & year >= 1963 & year <= 1979
 replace president = 1 if kalenjin_share62 >= 0.5 & year >= 1981 & year <= 2002
@@ -697,7 +702,7 @@ label var change_paved_mp "Paved road construction (pop.dist.counterfactual)[d,t
 
 order province distname* distnum year* change_paved_share change_paved* chpaved_share km_paved pop1962_* change_paved_share2 area_* multiparty president* presshare* *share62 pop1962 area urbrate1962 earnings wage_employment value_cashcrops MomKam border dist2nairobi pop1962_t area_t urbrate1962_t earnings_t wage_employment_t value_cashcrops_t MomKam_t border_t dist2nairobi_t
 
-save "$mypath\kenya_roads_pav", replace
+save "\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\LPReproduction\kenya_roads_pav", replace
 * creates "kenya_roads_pav", the data set with paved road construction as the dependent variable
 * the data set is saved in the main folder
 
@@ -775,7 +780,7 @@ label var vpMP "VP-Coethnic group dummy [e,t] x Democracy dummy [t]"
 
 order ethnic_group year cabinet_index cabinet_sh popshare*
 
-save "$mypath\kenya_roads_cabinet", replace
+save "\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\LPReproduction\kenya_roads_cabinet", replace
 * creates "kenya_roads_cabinet", the data set with the cabinet share as the dependent variable
 * the data set is saved in the main folder
 
