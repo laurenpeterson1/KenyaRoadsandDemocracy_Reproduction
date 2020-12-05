@@ -7,7 +7,7 @@ global mypath "\\Client\H$\Documents\GitHub\KenyaRoadsandDemocracy_Reproduction\
 * - One data set (kenya_roads_cabinet) with the cabinet share as the dependent variable
 
 *******************************************************************************************
-* This do-file first creates the main tables for the paper, table 1, 2, 3, 4, and 5 *******
+* This do-file first creates the main tables for the paper, table 1, 2 *******
 *******************************************************************************************
 
 *******************************************************************************************

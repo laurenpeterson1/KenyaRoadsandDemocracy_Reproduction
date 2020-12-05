@@ -15,15 +15,12 @@ robustness improvements:
 
 
 data sources for table 1 and 2
-  - oberservations.xls
+  - observations.xls
   - road_development_expenditure.xls
   - kenya_roads (merge with road_development_expenditure)
   - ethnic_shares.xls
   - kenya_roads (merge with ethnic_shares)
 -
-
-
-
 
 table 2
 - paved_road_construction.xls
@@ -45,3 +42,4 @@ table 2
 - use paved_road_construction
   - merge controls.dta
   - save as kenya_roads_pav (after a lot of editing)
+- 
